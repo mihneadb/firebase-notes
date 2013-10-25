@@ -22,5 +22,9 @@ function main() {
     notesRef = new Firebase("https://mihneadb.firebaseio.com/firebase-notes");
     $("#button-add").on("click", addNote);
     populateNotes();
+    notesRef.on("child_added", function(snapshot) {
+        var text = child.val();
+        $("#div-notes").append($("<p>" + text + "</p>"));
+    });
 }
 
