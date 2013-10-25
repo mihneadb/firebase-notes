@@ -6,22 +6,11 @@ function addNote() {
     $("#input-note").val("");
 }
 
-function populateNotes() {
-    var query = notesRef.startAt();
-    query.once("value", function(snapshot) {
-        snapshot.forEach(function(child) {
-            var text = child.val();
-            $("#div-notes").append($("<p>" + text + "</p>"));
-        });
-    });
-}
-
 var notesRef = null;
 function main() {
     notesRef = new Firebase("https://mihneadb.firebaseio.com/firebase-notes");
     $("#button-add").on("click", addNote);
-    populateNotes();
-    notesRef.on("child_added", function(snapshot) {
+    notesRef.endAt().limit(20).on("child_added", function(snapshot) {
         var text = snapshot.val();
         $("#div-notes").append($("<p>" + text + "</p>"));
     });
