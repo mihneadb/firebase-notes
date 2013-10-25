@@ -3,7 +3,6 @@ $(document).ready(main);
 function addNote() {
     var text = $("#input-note").val();
     notesRef.push(text);
-    $("#div-notes").append($("<p>" + text + "</p>"));
     $("#input-note").val("");
 }
 
