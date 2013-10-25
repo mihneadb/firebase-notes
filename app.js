@@ -23,7 +23,7 @@ function main() {
     $("#button-add").on("click", addNote);
     populateNotes();
     notesRef.on("child_added", function(snapshot) {
-        var text = child.val();
+        var text = snapshot.val();
         $("#div-notes").append($("<p>" + text + "</p>"));
     });
 }
