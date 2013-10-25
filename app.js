@@ -19,7 +19,7 @@ function populateNotes() {
 
 var notesRef = null;
 function main() {
-    notesRef = new Firebase("https://mihneadb.firebaseio.com");
+    notesRef = new Firebase("https://mihneadb.firebaseio.com/firebase-notes");
     $("#button-add").on("click", addNote);
     populateNotes();
 }
